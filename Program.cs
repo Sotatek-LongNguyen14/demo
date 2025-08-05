@@ -13,6 +13,7 @@ Console.WriteLine($"The connection string is: {connectionString}");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<Demo.Repositories.IBookRepository, Demo.Repositories.BookRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseNpgsql(connectionString);

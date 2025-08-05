@@ -1,1 +1,36 @@
+# This file is based on the default .NET Core .gitignore template
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Aa]rm64/
+[Aa]rm/
+[xX]64/
+[xX]86/
+[Aa]ndroid/
+[Ww]in/
+[Mm]ac/
+[Ll]inux/
+
+# VS Code files
+.vscode/
+
+# Ignore Visual Studio files
+*.vspscc
+.vs/
+
+# Binaries and build artifacts
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.suo
+
+# NuGet files
+*.nupkg
+*.nuget.props
+*.nuget.targets
+
+# Environment variables
 .env

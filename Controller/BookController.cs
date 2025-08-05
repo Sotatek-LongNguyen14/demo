@@ -3,50 +3,48 @@ using Microsoft.EntityFrameworkCore;
 namespace Demo.Controller;
 using Microsoft.AspNetCore.Mvc;
 using Demo.Models;
+using Demo.Repositories;
 
 [Route("api/[controller]")]
 [ApiController]
 public class BookController : ControllerBase {
-    private readonly ApplicationDbContext _context;
-
-    public BookController(ApplicationDbContext context) {
-        _context = context;
+    private readonly IBookRepository _bookRepository;
+    public BookController(IBookRepository bookRepository) {
+        _bookRepository = bookRepository;
     }
     
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Book>>> GetAllBooks() {
-        return await _context.Books.ToListAsync();
+        return Ok(await _bookRepository.GetAllAsync());
     } 
     
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetBookById(int id) {
-        var book = await _context.Books.FindAsync(id);
+        var book = await _bookRepository.GetByIdAsync(id);
 
         if (book == null) {
             return NotFound();
         }
 
-        return book;
+        return Ok(book);
     }
     
     [HttpPost]
     public async Task<ActionResult<Book>> PostBook(Book book) {
-        _context.Books.Add(book);
-        await _context.SaveChangesAsync();
+        await _bookRepository.AddAsync(book);
 
         return CreatedAtAction(nameof(GetBookById), new { id = book.Id }, book);
     }
     
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBook(int id) {
-        var book = await _context.Books.FindAsync(id);
+        var book = await _bookRepository.GetByIdAsync(id);
 
         if (book == null) {
             return NotFound();
         }
 
-        _context.Books.Remove(book);
-        await _context.SaveChangesAsync();
+        await _bookRepository.DeleteAsync(id);
 
         return NoContent();
     }
