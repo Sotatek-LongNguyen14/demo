@@ -1,36 +1,74 @@
-# This file is based on the default .NET Core .gitignore template
+bin/
+obj/
+[Ll]og/
+*.log
 
-# Build results
-[Dd]ebug/
-[Rr]elease/
-[Aa]rm64/
-[Aa]rm/
-[xX]64/
-[xX]86/
-[Aa]ndroid/
-[Ww]in/
-[Mm]ac/
-[Ll]inux/
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
-# VS Code files
+## Mono Auto Generated Files
+mono_crash.*
+
+## Visual Studio Code
 .vscode/
 
-# Ignore Visual Studio files
-*.vspscc
-.vs/
+## ASP.NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
 
-# Binaries and build artifacts
-[Bb]in/
-[Oo]bj/
-*.exe
-*.dll
+## .NET Core
+*.db
+*.db-shm
+*.db-wal
 *.pdb
-*.suo
+*.cache
+*.pidb
+*.svclog
+*.sdf
+*.vsp
+*.vspx
+*.tmp
+*.bak
+*.old
+*.orig
 
-# NuGet files
+## IIS Express
+.vs/
+*.vspscc
+*.vssscc
+
+## NuGet
 *.nupkg
-*.nuget.props
-*.nuget.targets
+*.snupkg
+.nuget/
+packages/
+*.nuspec
 
-# Environment variables
+## Others
+*.swp
+*.DS_Store
+*.AppleDouble
+*.Thumbs.db
+
+## Rider & JetBrains
+.idea/
+*.sln.iml
+
+## Configuration
+appsettings.Development.json
+secrets.json
 .env
+
+## Coverage tools
+coverage/
+TestResults/
+*.coverage
+*.coveragexml
+*.testresult
+
+## Local tools
+.tools/
