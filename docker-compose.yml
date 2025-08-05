@@ -1,0 +1,27 @@
+services:
+  demo-app:
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80" 
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DbConnection=Host=db;Port=5432;Database=DemoDb;Username=gohan;Password=12345
+    depends_on:
+      - db 
+  db:
+    image: postgres:14-alpine 
+    restart: always 
+    environment:
+      POSTGRES_DB: DemoDb 
+      POSTGRES_USER: gohan
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432" 
+                    
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+
+volumes:
+  pgdata: 

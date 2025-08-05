@@ -129,5 +129,3 @@
 /home/goku/CODE/CSharpProjects/LearnCSharp/Demo/obj/Debug/net9.0/Demo.pdb
 /home/goku/CODE/CSharpProjects/LearnCSharp/Demo/obj/Debug/net9.0/Demo.genruntimeconfig.cache
 /home/goku/CODE/CSharpProjects/LearnCSharp/Demo/obj/Debug/net9.0/ref/Demo.dll
-/home/goku/CODE/CSharpProjects/LearnCSharp/Demo/bin/Debug/net9.0/DotNetEnv.dll
-/home/goku/CODE/CSharpProjects/LearnCSharp/Demo/bin/Debug/net9.0/Sprache.dll

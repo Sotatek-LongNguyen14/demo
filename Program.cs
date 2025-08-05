@@ -1,12 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Demo.Models;
-using DotNetEnv;
 
-Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+var connectionString = builder.Configuration.GetConnectionString("DbConnection");
 
 Console.WriteLine($"The connection string is: {connectionString}");
 
