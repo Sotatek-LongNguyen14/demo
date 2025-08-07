@@ -14,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<Demo.Repositories.IBookRepository, Demo.Repositories.BookRepository>();
+builder.Services.AddScoped<Demo.Repositories.IAuthorRepository, Demo.Repositories.AuthorRepository>();
 // configure validation
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();

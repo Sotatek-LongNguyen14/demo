@@ -10,12 +10,14 @@ public class BookValidator : AbstractValidator<Book> {
             .WithMessage("Title is required")
             .MaximumLength(100)
             .WithMessage("Title cannot exceed 100 characters");
-        
+
         RuleFor(book => book.Author)
-            .NotEmpty()
-            .WithMessage("Author is required")
-            .MaximumLength(100)
-            .WithMessage("Author cannot exceed 100 characters");
+            .NotNull()
+            .SetValidator(new AuthorValidator());
+        
+        RuleFor(book => book.Publisher)
+            .NotNull()
+            .SetValidator(new PublisherValidator());
         
         RuleFor(book => book.PublishYear)
             .LessThanOrEqualTo(DateTime.Now.Year)

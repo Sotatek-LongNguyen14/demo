@@ -20,7 +20,7 @@ public class BookController : ControllerBase {
     
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetBookById(int id) {
-        var book = await _bookRepository.GetByIdAsync(id);
+        var book = await _bookRepository.GetBookDtoByIdAsync(id);
 
         if (book == null) {
             return NotFound();
@@ -38,7 +38,7 @@ public class BookController : ControllerBase {
     
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBook(int id) {
-        var book = await _bookRepository.GetByIdAsync(id);
+        var book = await _bookRepository.GetBookByIdAsync(id);
 
         if (book == null) {
             return NotFound();
