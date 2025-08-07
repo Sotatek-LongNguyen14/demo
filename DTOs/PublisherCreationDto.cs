@@ -1,11 +1,8 @@
-namespace Demo.Models;
+namespace Demo.DTOs;
 
-public class Publisher {
-    public int Id { get; set; }
+public class PublisherCreationDto {
     public string Name { get; set; } = null!;
     public string Location { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string Phone { get; set; } = null!;
-    
-    public ICollection<Book> Books { get; set; } = new List<Book>();
 }
