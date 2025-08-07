@@ -1,3 +1,4 @@
+using Demo.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Controller;
@@ -30,7 +31,15 @@ public class BookController : ControllerBase {
     }
     
     [HttpPost]
-    public async Task<ActionResult<Book>> PostBook(Book book) {
+    public async Task<ActionResult<Book>> PostBook(BookCreationDto bookCreationDto) {
+        var book = new Book() {
+            Title = bookCreationDto.Title,
+            AuthorId = bookCreationDto.AuthorId,
+            PublishYear = bookCreationDto.PublishYear,
+            ISBN = bookCreationDto.ISBN,
+            PublisherId = bookCreationDto.PublisherId,
+        };
+        
         await _bookRepository.AddAsync(book);
 
         return CreatedAtAction(nameof(GetBookById), new { id = book.Id }, book);

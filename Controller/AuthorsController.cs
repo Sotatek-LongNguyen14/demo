@@ -1,3 +1,5 @@
+using Demo.DTOs;
+
 namespace Demo.Controller;
 
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +34,14 @@ public class AuthorsController : ControllerBase {
     }
 
     [HttpPost]
-    public async Task<ActionResult<Author>> PostAuthor(Author author) {
+    public async Task<ActionResult<Author>> PostAuthor(AuthorCreationDto authorCreationDto) {
+        var author = new Author() {
+            Name = authorCreationDto.Name,
+            Email = authorCreationDto.Email,
+            DateOfBirth = authorCreationDto.DateOfBirth,
+            Address = authorCreationDto.Address,
+        };
+        
         await _authorRepository.AddAuthorAsync(author);
         return CreatedAtAction(nameof(GetAuthorById), new { id = author.Id }, author);
     }

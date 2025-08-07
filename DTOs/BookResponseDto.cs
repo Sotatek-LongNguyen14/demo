@@ -2,7 +2,7 @@ using Demo.Models;
 
 namespace Demo.DTOs;
 
-public class BookDto {
+public class BookResponseDto {
     public int Id { get; set; }
     public string Title { get; set; }
     public int PublishYear { get; set; }

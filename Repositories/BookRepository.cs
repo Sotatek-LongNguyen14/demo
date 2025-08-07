@@ -15,13 +15,13 @@ public class BookRepository : IBookRepository {
         return await _dbContext.Books.ToListAsync();
     }
 
-    public async Task<BookDto?> GetBookDtoByIdAsync(int id) {
+    public async Task<BookResponseDto?> GetBookDtoByIdAsync(int id) {
         var book = await _dbContext.Books
             .Include(b => b.BookAuthors)
             .ThenInclude(ba => ba.Author)
             .Include(b => b.Publisher)
             .Where(b => b.Id == id)
-            .Select(b => new BookDto {
+            .Select(b => new BookResponseDto {
                 Id = b.Id,
                 Title = b.Title,
                 PublishYear = b.PublishYear,
